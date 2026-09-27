@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>社区失物招领保管台</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>社区失物招领保管台</h1>
+  <nav>
+    <button class="tab active" data-tab="items">保管台</button>
+    <button class="tab" data-tab="claim">我要认领</button>
+    <button class="tab" data-tab="admin">管理核验</button>
+  </nav>
+</header>
+
+<main>
+  <!-- 保管台：物品档案 -->
+  <section id="tab-items" class="page active">
+    <h2>登记拾获物</h2>
+    <form id="register-form" class="card form">
+      <label>物品名称 <input name="name" required placeholder="如：黑色皮质钱包"></label>
+      <label>拾获地点 <input name="location" required placeholder="如：社区东门长椅"></label>
+      <label>保管格 <input name="slot" required placeholder="如：A-01"></label>
+      <label>认领暗号 <input name="passphrase" required placeholder="只有失主知道的暗号"></label>
+      <label>保管到期日 <input name="expiresAt" type="date" required></label>
+      <button type="submit">登记入库</button>
+    </form>
+
+    <h2>在册物品</h2>
+    <div id="item-list"></div>
+  </section>
+
+  <!-- 我要认领 -->
+  <section id="tab-claim" class="page">
+    <h2>提交认领</h2>
+    <form id="claim-form" class="card form">
+      <label>选择物品 <select name="itemId" required></select></label>
+      <label>您的称呼 <input name="claimant" required placeholder="如：王女士"></label>
+      <label>认领暗号 <input name="passphrase" required placeholder="登记时约定的暗号"></label>
+      <label>物品特征描述 <textarea name="features" required placeholder="请描述只有失主知道的细节"></textarea></label>
+      <button type="submit">提交认领</button>
+    </form>
+    <p id="claim-result" class="result"></p>
+
+    <h2>认领队列</h2>
+    <div id="queue-list"></div>
+  </section>
+
+  <!-- 管理核验 -->
+  <section id="tab-admin" class="page">
+    <h2>待核验认领</h2>
+    <div id="admin-list"></div>
+  </section>
+</main>
+
+<footer>
+  <button id="reset-btn" class="link">重置演示数据</button>
+</footer>
+
+<script src="items.js"></script>
+<script src="claims.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
